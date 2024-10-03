@@ -1,0 +1,14 @@
+{% if menu_items %}
+    <ul>
+        {% for item in menu_items %}
+            <li {% if item.is_active %}class="active"{% endif %}>
+                {% if item.url %}
+                    <a href="{% if '/' in item.url %}{{ item.url }}{% else %}{% url item.url %}{% endif %}">{{ item.title }}</a>
+                {% else %}
+                    {{ item.title }}
+                {% endif %}
+                {% draw_menu item.id %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
